@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> java script and interact with DOM</title>
+    </head>
+ 
+<body>
+    <h1> “Painter entry” sahithya sirimalla</h1>
+
+
+
+ <form>
+    <label for="mypasswordId">The confidence Painter</label>
+    <input type ="password" id="mypasswordId" value="Monet"> <br> <br>
+    
+    <label for="myguessPainterId">Guess my painter name </label>
+    <input type ="text" id="myguessPainterId" autofocus > <br>
+    
+        <input type="button" onclick="checkPainter()" value="Check the guess">
+    </form>
+    
+       <p id="outputId"> </p>
+
+    <script> 
+        let good = 0;
+        let oops=0;
+    function checkPainter(){
+        let ConfidencePainter = document.getElementById("mypasswordId").value;
+        let guess = document.getElementById("myguessPainterId").value;
+        if(ConfidencePainter==guess){
+            good=good+1;
+            alert("You got it right");
+        }else{
+            oops=oops+1;
+            alert("sorry");
+        }
+        document.getElementById('outputId').innerHTML = "good roundoff is "+good+" oops roundoff is "+oops;
+    }
+    </script>
+</body>
+</html> 
