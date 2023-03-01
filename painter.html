@@ -37,5 +37,25 @@
         document.getElementById('outputId').innerHTML = "good roundoff is "+good+" oops roundoff is "+oops;
     }
     </script>
+    <div class="container">
+        <img src="Iris.jpg" id="image" width="100" height="100" onclick="selectImage()">
+    </div>
+    <script>
+        var useImage = 1;
+        function selectImage() {
+
+            switch (useImage) {
+                case 1:
+                    useImage = 2; document.getElementById("image").src = "Iris.jpg";
+                    break;
+                case 2:
+                    useImage = 3; document.getElementById("image").src = "Ramanasrose.jpg";
+                    break;
+                case 3:
+                    useImage = 1; document.getElementById("image").src = "Scilla.jpg";
+                    break;
+            }
+        }
+    </script>
 </body>
 </html> 
