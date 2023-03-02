@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>javascript checkboxes candy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" 
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" 
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+   <script>
+
+var my_candy_box = {dark:"",nuts:"",chewy:""};
+    function selectBox(){
+        my_candy_box.dark=document.getElementById("chocoloate").checked;
+        my_candy_box.nuts=document.getElementById("nuts").checked;
+        my_candy_box.chewy=document.getElementById("chewy").checked;
+        document.getElementById('result').innerHTML="chocoloate : "+my_candy_box.dark+" nuts : "+my_candy_box.nuts+" chewy : "+my_candy_box.chewy;
+    }
+
+    function updateBox(){
+        my_candy_box["size"]=document.getElementById("size").value;
+        my_candy_box["price"]=document.getElementById("price").value;
+        document.getElementById('result2').innerHTML=my_candy_box.size+"  "+my_candy_box.price;
+    }
+
+</script>
+</head>   
+<body>
+
+    <h2>sahithya sirimalla "chooses candy”</h2>
+    
+<div class="container">
+    <form>
+         <input type="checkbox" id="chocoloate" name="candy" value="true">
+         <label for="chocoloate"> Dark Chocolate</label><br>
+    
+         <input type="checkbox" id="nuts" name="candy"  value="true">
+         <label for="nuts"> Nuts</label><br>
+    
+         <input type="checkbox" id="chewy"  name="candy" value="false">
+         <label for="chewy"> Chewy</label><br>
+    
+         <input type="button" class="btn btn-success" onclick="selectBox()" value="Select a box "> 
+    </form>
+    </div>
+    
+    <p id="result">This text will be replaced </p>
+    <div class="container">
+    <form>
+        <input type="text" class="form-control" id="size" name="size" value="size" style="width: 150px; height: 30px">
+        <label for="size"> Enter the size</label><br>
+    
+        <input type="text" class="form-control" name="price" id="price" style="width: 150px; height: 30px">
+        <label for="price"> Enter price</label><br>
+        <input type="button" class="btn btn-warning" onclick="updateBox()" value="Update the box ">
+    </form>
+    </div>
+    <p id="result2">This text will be replaced </p>
+    </body>
+    </html> 
+
+    
