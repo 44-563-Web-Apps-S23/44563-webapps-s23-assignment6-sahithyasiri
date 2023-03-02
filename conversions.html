@@ -1,59 +1,96 @@
 <!DOCTYPE html>
 <html>
+    <title>conversions with javascript</title>
  
 <body>
 
     <h2>Sahithya sirimalla currency conversions</h2>
-
-
-
-<form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
-</form>
-
-
-<p id="result">This text will be replaced </p>
-
-<p id="result">Displays conversion</p>
-
     <form>
         <div class="form-group">
-            <input type="radio" name="action" id="mean" name="average" value="mean">
-            <label for="mean">Mean</label><br>
-            <input type="radio" name="action" id="max" name="max" value="maximum">
-            <label for="max">Max</label><br>
-            <input type="radio" name="action" id="min" name="min" value="minimum">
-            <label for="min">Min</label><br>
+            <label for="b_value">Enter base amount </label>
+            <input type ="number" id="b_value" name="b_value" value=50> <br>
+        </div>
+        <div class="form-group">
+            <label for="c_value">Enter the conversion rate</label>
+            <input type ="number" id="c_value" name="c_value" value=35> <br>
+        </div>
+        <input type="button" class="btn btn-warning" onclick="convert()" value="show conversions">
     </form>
-
-
-    <input type="button" class="btn btn-primary" onclick="chooseOp()" value="Get values from radio group">
-    <p id="result1">Radio Buttons</p>
-    </div>
-
-
-<script> 
-
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
     
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
+<p id="result">This text will be replaced </p>
 
-</body>
+<script>
+    function convert()
+    {   
+        let b_value=document.getElementById("b_value").value;
+        let convertedvalue=document.getElementById("c_value").value;
+        let toShow="";
+        if (convertedvalue - Math.floor(convertedvalue) != 0)
+        {
+          for (let i = 0; i < 5; i++) 
+          {
+            let conversion=((b_value*(Math.floor(Math.pow(2,i))))*convertedvalue).toFixed(1);
+            toShow=toShow+" "+b_value*(Math.pow(2,i))+" is "+conversion+"; ";
+
+          }
+        } 
+        else 
+        {
+          for (let i = 0; i < 5; i++) 
+          {
+            let conversion=((b_value*(Math.pow(2,i)))*convertedvalue);
+            toShow=toShow+" "+b_value*(Math.pow(2,i))+" is "+conversion+"; ";
+          }
+        }
+        document.getElementById("result").innerHTML="Conversions are: "+toShow;
+    
+    }
+</script>
+<div class="container">
+    <form>
+        <div class="form-group">
+        <input type="radio" id="first" name="operation" onclick="chooseOp()" value="mean">
+        <label for="first">average</label> <br>
+        </div>
+        <div class="form-group">
+        <input type="radio" id="second" name="operation" onclick="chooseOp()" value="maximum">
+        <label for="second">max</label> <br>
+        </div>
+    
+        <input type="radio" id="third" name="operation" onclick="chooseOp()" value="minimum">
+        <label for="third">min</label> <br>
+    </form>
+    
+    <p id="result2">This text will be replaced </p>
+    </div>
+    </div>
+    <script> 
+        function chooseOp()
+        {
+           let base=document.getElementById("b_value").value;
+           let conversion=document.getElementById("c_value").value;
+           let mean=document.getElementById("first").checked;
+           let maximum=document.getElementById("second").checked;
+           let minimum=document.getElementById("third").checked;
+           let results=0;
+           if(mean)
+           {
+            results=(parseInt(base)+parseInt(conversion))/2; 
+           }
+           else if(maximum)
+           {
+            results= base > conversion? base : conversion;
+           }
+           else if(minimum)
+           {
+            results= base < conversion? base : conversion;
+           }
+           document.getElementById("result2").innerHTML=results
+        
+        }
+    </script>
+
+
+
+    </body>
 </html> 
